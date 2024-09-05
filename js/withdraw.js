@@ -1,19 +1,27 @@
-document.getElementById('btn-withdraw').addEventListener('click',function ( ) {
-  const withdrawFeild = document.getElementById('withdrawFeild').value;
-  const withdrawFeildNumber = parseFloat(withdrawFeild);
+document.getElementById('btn-withdraw').addEventListener('click',function( ) {
+  const withdrawFeild = document.getElementById('withdrawFeild');
+  const withdrawFeildValue = parseFloat(withdrawFeild.value);
 
-//   step-2
-const totalWithdraw = document.getElementById('totalWithdraw').innerText;
-const totalWithdrawNum = parseFloat(totalWithdraw);
+  withdrawFeild.value='';
 
-document.getElementById('totalWithdraw').innerText = totalWithdrawNum+withdrawFeildNumber;
+  if (isNaN (withdrawFeildValue)) {
+    alert('pls type a Number');
+    return;
+  }
 
-// step-3
-const balanceEle = document.getElementById('balanceEle');
-const prevbalanceEle = parseFloat(balanceEle.innerText);
+  const totalWithdraw= document.getElementById('totalWithdraw');
+  const totalWithdrawValue = parseFloat(totalWithdraw.innerText);
 
-balanceEle.innerText = prevbalanceEle - withdrawFeildNumber;
-// step-7
-document.getElementById('withdrawFeild').value = '';
+  if (withdrawFeildValue>balanceElePrev) {
+    alert('etu taka nai')
+    return;
+  }
 
+  totalWithdraw.innerText = totalWithdrawValue+withdrawFeildValue;
+
+  const balanceEle= document.getElementById('balanceEle');
+  const balanceElePrev = parseFloat(balanceEle.innerText);
+
+
+balanceEle.innerText = balanceElePrev - withdrawFeildValue;
 })

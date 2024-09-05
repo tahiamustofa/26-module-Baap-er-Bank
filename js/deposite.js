@@ -1,42 +1,25 @@
 
-// practice
-// document.getElementById('btn-deposite').addEventListener('click',function() {
-//   const newDepo = document.getElementById('deposite-felid').value;
-//   const prevDepo=  document.getElementById('total-depo').innerText ;
-// //   step=4
-//   const  currentUpdateDepo =  parseFloat(prevDepo)  + parseFloat(newDepo);
-
-//   document.getElementById('total-depo').innerText = currentUpdateDepo ;
-  
-// //   step-5
-//   const balanceEle = document.getElementById('balanceEle');
-//  const prevBalance= parseFloat(balanceEle.innerText);
-
-// //  step-6
-// const currentBalance = prevBalance + parseFloat(newDepo);
-// balanceEle.innerText = currentBalance;
-
-
-
-// //   step-7
-// document.getElementById('deposite-felid').value= '';
-// })
-
-document.getElementById('btn-deposite').addEventListener('click',function() {
+document.getElementById('btn-deposite').addEventListener('click',function( ){
     const depositeFelid= document.getElementById('deposite-felid');
-    const depositeFelidvalue = depositeFelid.value;
+    const depositeFelidValue =  parseFloat(depositeFelid.value);
 
-    // step 2
-    const currentDepo = document.getElementById('total-depo');
-    const currentDepovalue = currentDepo.innerText;
+    // step-7
+    depositeFelid.value = '';
 
-    currentDepo.innerText = parseFloat(currentDepovalue) + parseFloat(depositeFelidvalue);
+    if (isNaN(depositeFelidValue)) {
+        alert('please enter a number');
+        return;
+    }
 
-    // step-3
-    const balanceEle = document.getElementById('balanceEle');
-    const currentBalance=balanceEle.innerText;
-     
-    
-    balanceEle.innerText = parseFloat(depositeFelidvalue) + parseFloat(currentBalance);
-    depositeFelid.value= '';
+    const totalDepo = document.getElementById('total-depo');
+    const totalDepoValue = parseFloat(totalDepo.innerText);
+
+ totalDepo.innerText = totalDepoValue + depositeFelidValue ;
+
+ const balanceEle = document.getElementById('balanceEle');
+ const balanceElePrev = parseFloat(balanceEle.innerText);
+
+
+ balanceEle.innerText = balanceElePrev + depositeFelidValue;
+ 
 })
